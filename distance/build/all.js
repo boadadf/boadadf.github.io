@@ -153,8 +153,8 @@ RingBuffer.prototype.remove = function(index, length) {
 
 function SonicCoder(params) {
   params = params || {};
-  this.freqMin = params.freqMin || 14500;
-  this.freqMax = params.freqMax || 16500;
+  this.freqMin = params.freqMin || 16500;
+  this.freqMax = params.freqMax || 18500;
   this.freqError = params.freqError || 50;  
 }
 
@@ -290,7 +290,7 @@ SonicServer.prototype.getPeakFrequency = function() {
   var index = -1;
   
   for (var i = start; i < this.freqs.length; i++) {
-    if (this.freqs[i] > max && (calibrating || Math.round(((this.indexToFreq(i)-14500)/200))!=id)) {
+    if (this.freqs[i] > max && (calibrating || Math.round(((this.indexToFreq(i)-16500)/200))!=id)) {
       max = this.freqs[i];
       index = i;
     }
@@ -370,8 +370,8 @@ SonicServer.prototype.analysePeaks = function() {
     return;
   }
 
-  if(freq>14400 && freq<16600) {
-	this.fire_(this.callbacks.danger, Math.round(((freq-14500)/200)));
+  if(freq>16400 && freq<18600) {
+	this.fire_(this.callbacks.danger, Math.round(((freq-16500)/200)));
   }  
 };
 

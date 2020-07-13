@@ -121,7 +121,7 @@ var calibrating = true;
 var calibrated = false;
 function start() {  
     document.getElementById('history').innerHTML = time()+': started.';  	    	
-	curr_volume_decibel =  -60 - (0.8*parseInt(slider1.value));
+	curr_volume_decibel =  -70 - (0.8*parseInt(slider1.value));
     if(!started) {
 		init1();
 
@@ -143,8 +143,8 @@ function stop() {
 }
 
 function setId() {
-	frequence = getRandomNumber(14500,16500,200);
-	id = (frequence - 14500) / 200;
+	frequence = getRandomNumber(16500,18500,200);
+	id = (frequence - 16500) / 200;
 	document.getElementById("myIdField").value = id;
 }
 function getRandomNumber(start, end, increments) {
@@ -163,7 +163,7 @@ function calibrate() {
 	slider1.value = 50;
     slider2.value = 50;
 	document.getElementById('history').innerHTML = time()+': calibrating.';  	    	
-	curr_volume_decibel =  -60 - (0.8*parseInt(slider2.value));
+	curr_volume_decibel =  -70 - (0.8*parseInt(slider2.value));
 	if(!started) {
 		init1();		
 	} 
@@ -182,7 +182,7 @@ function doCalibration() {
            output1.innerHTML = slider1.value;
 		   curr_volume = value;
 		   if(gainNode) {
-			   curr_volume_decibel =  -60 - (0.8*value);
+			   curr_volume_decibel =  -70 - (0.8*value);
 			   console.log('setting sensitivity:'+curr_volume_decibel)
 			   curr_volume_decimal =  (value/100)
 			   gainNode.gain.value = curr_volume_decimal;
@@ -199,7 +199,7 @@ function doCalibration() {
 		slider2.value = slider2.value-15;
    	    output2.innerHTML = slider2.value;
 	    curr_sensitivity = slider2.value;
-        curr_volume_decibel =  -60 - (0.8*parseInt(slider2.value));
+        curr_volume_decibel =  -70 - (0.8*parseInt(slider2.value));
 		console.log('setting sensitivity:'+curr_volume_decibel)
 		calibrating = false;
 	}
@@ -221,7 +221,7 @@ slider2.oninput = function() {
    output2.innerHTML = this.value;
    curr_sensitivity = this.value;
    if(gainNode) {
-       curr_volume_decibel =  -60 - (0.8*parseInt(this.value));
+       curr_volume_decibel =  -70 - (0.8*parseInt(this.value));
 	   console.log('-setting sensitivity:'+curr_volume_decibel)
    }
 } 
